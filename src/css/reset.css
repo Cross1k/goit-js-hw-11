@@ -147,7 +147,7 @@ form {
   margin: -50px auto 0;
   position: relative;
   color: #6c8cff;
-  transform: translateY(30px);
+  transform: translate(-30px, 90px);
   box-sizing: border-box;
   animation: animloader 2s ease infinite;
 }
