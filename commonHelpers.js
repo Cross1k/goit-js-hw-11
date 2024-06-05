@@ -1,2 +1,21 @@
-import"./assets/modulepreload-polyfill-3cfb730f.js";/* empty css                      */import{S as e}from"./assets/vendor-10cb7c31.js";const n=[{preview:"https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820__480.jpg",original:"https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820_1280.jpg",description:"Hokkaido Flower"},{preview:"https://cdn.pixabay.com/photo/2019/05/14/22/05/container-4203677__340.jpg",original:"https://cdn.pixabay.com/photo/2019/05/14/22/05/container-4203677_1280.jpg",description:"Container Haulage Freight"},{preview:"https://cdn.pixabay.com/photo/2019/05/16/09/47/beach-4206785__340.jpg",original:"https://cdn.pixabay.com/photo/2019/05/16/09/47/beach-4206785_1280.jpg",description:"Aerial Beach View"},{preview:"https://cdn.pixabay.com/photo/2016/11/18/16/19/flowers-1835619__340.jpg",original:"https://cdn.pixabay.com/photo/2016/11/18/16/19/flowers-1835619_1280.jpg",description:"Flower Blooms"},{preview:"https://cdn.pixabay.com/photo/2018/09/13/10/36/mountains-3674334__340.jpg",original:"https://cdn.pixabay.com/photo/2018/09/13/10/36/mountains-3674334_1280.jpg",description:"Alpine Mountains"},{preview:"https://cdn.pixabay.com/photo/2019/05/16/23/04/landscape-4208571__340.jpg",original:"https://cdn.pixabay.com/photo/2019/05/16/23/04/landscape-4208571_1280.jpg",description:"Mountain Lake Sailing"},{preview:"https://cdn.pixabay.com/photo/2019/05/17/09/27/the-alps-4209272__340.jpg",original:"https://cdn.pixabay.com/photo/2019/05/17/09/27/the-alps-4209272_1280.jpg",description:"Alpine Spring Meadows"},{preview:"https://cdn.pixabay.com/photo/2019/05/16/21/10/landscape-4208255__340.jpg",original:"https://cdn.pixabay.com/photo/2019/05/16/21/10/landscape-4208255_1280.jpg",description:"Nature Landscape"},{preview:"https://cdn.pixabay.com/photo/2019/05/17/04/35/lighthouse-4208843__340.jpg",original:"https://cdn.pixabay.com/photo/2019/05/17/04/35/lighthouse-4208843_1280.jpg",description:"Lighthouse Coast Sea"}],c=document.querySelector(".gallery"),i=document.createDocumentFragment();n.forEach(o=>{const a=document.createElement("li"),t=document.createElement("a"),p=document.createElement("img");a.classList.add("gallery-item"),t.classList.add("gallery-link"),t.href=o.original,p.classList.add("gallery-image"),p.src=o.preview,p.alt=o.description,p.title=o.description,i.append(a),a.append(t),t.append(p)});c.append(i);new e(".gallery a",{captionDelay:250});
+import"./assets/vendor-b20c67ea.js";(function(){const n=document.createElement("link").relList;if(n&&n.supports&&n.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))t(e);new MutationObserver(e=>{for(const r of e)if(r.type==="childList")for(const l of r.addedNodes)l.tagName==="LINK"&&l.rel==="modulepreload"&&t(l)}).observe(document,{childList:!0,subtree:!0});function i(e){const r={};return e.integrity&&(r.integrity=e.integrity),e.referrerPolicy&&(r.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?r.credentials="include":e.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function t(e){if(e.ep)return;e.ep=!0;const r=i(e);fetch(e.href,r)}})();function u(){return fetch(`https://pixabay.com/api/?key=44114689-8a541e952a98dbeee0dc95ac7&q=${s}&image_type=photo&orientation=horizontal&safesearch=true`).then(o=>{if(!o.ok)throw new Error(o.status);return o.json()})}function d(o){c.innerHTML="";const i=o.hits.map(t=>`<li class="gallery-item">
+        <a class="gallery-link" href="${t.largeImageURL}">
+          <img
+            class="gallery-image"
+            src="${t.webformatURL}"
+            data-source="${t.largeImageURL}"
+            alt="${t.tags}"
+          />
+          <ul class="gallery-description">
+          <li><h3>Likes</h3><p>${t.likes}</p>
+          </li>
+          <li><h3>Views</h3><p>${t.views}</p>
+            </li>
+            <li><h3>Comments</h3><p>${t.comments}</p>
+              </li>
+              <li><h3>Downloads</h3><p>${t.downloads}</p>
+                </li>
+          </ul>
+        </a>
+      </li>`).join("");c.insertAdjacentHTML("beforeend",i)}const c=document.querySelector(".gallery");let s="";const f=document.querySelector(".form-button"),a=document.querySelector(".form-input");a.addEventListener("input",()=>{s=a.value.trim()});f.addEventListener("click",o=>{o.preventDefault(),s&&u().then(n=>d(n)).catch(n=>console.log(n))});
 //# sourceMappingURL=commonHelpers.js.map
