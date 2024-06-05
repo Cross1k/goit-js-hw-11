@@ -7,6 +7,12 @@ import { gallery } from '../main';
 export function renderGallery(data) {
   gallery.innerHTML = '';
   const images = data.hits;
+  if (!images.lenght)
+    iziToast.error({
+      message:
+        'Sorry, there are no images matching your search query. Please try again!',
+      position: 'topRight',
+    });
   const galleryView = images
     .map(image => {
       return `<li class="gallery-item">
@@ -32,4 +38,10 @@ export function renderGallery(data) {
     })
     .join('');
   gallery.insertAdjacentHTML('beforeend', galleryView);
+
+  let gall = new SimpleLightbox('.gallery a', {
+    captionDelay: 250,
+    captionsData: 'alt',
+  });
+  gall.refresh();
 }
