@@ -1,7 +1,5 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
-import SimpleLightbox from 'simplelightbox';
-import 'simplelightbox/dist/simple-lightbox.min.css';
 import { pixabayFetch } from './js/pixabay-api';
 import { renderGallery } from './js/render-functions';
 export const gallery = document.querySelector('.gallery');
@@ -16,9 +14,17 @@ formInp.addEventListener('input', () => {
 
 formBtn.addEventListener('click', e => {
   e.preventDefault();
+
   if (q) {
+    gallery.innerHTML = '<span class="loader"></span>';
     pixabayFetch()
       .then(data => renderGallery(data))
-      .catch(error => console.log(error));
+      .catch(error => {
+        iziToast.error({
+          message:
+            'Sorry, there are no images matching your search query. Please try again!',
+          position: 'topRight',
+        });
+      });
   }
 });
