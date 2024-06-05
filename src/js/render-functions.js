@@ -7,12 +7,14 @@ import { gallery } from '../main';
 export function renderGallery(data) {
   gallery.innerHTML = '';
   const images = data.hits;
-  if (!images.lenght)
-    iziToast.error({
+  // console.log(images.length);
+  if (!images.length) {
+    return iziToast.error({
       message:
         'Sorry, there are no images matching your search query. Please try again!',
       position: 'topRight',
     });
+  }
   const galleryView = images
     .map(image => {
       return `<li class="gallery-item">
