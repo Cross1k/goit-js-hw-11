@@ -1,4 +1,10 @@
 /* Reset styles */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
 h1,
 h2,
 h3,
@@ -16,6 +22,9 @@ p:last-child {
 ul {
   margin: 0;
   padding: 0;
+}
+
+li {
   list-style: none;
 }
 
@@ -25,6 +34,7 @@ a {
 }
 
 button {
+  display: block;
   cursor: pointer;
   font-family: inherit;
 }
@@ -33,6 +43,13 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: center;
 }
 
 .gallery {
@@ -47,26 +64,10 @@ img {
 .gallery-image {
   width: 360px;
   height: 200px;
-  transition: transform 400ms ease;
 }
 
-.gallery-image:hover {
-  transform: scale(1.04);
-}
-
-label {
-  display: flex;
-  flex-direction: column;
-}
-
-label:first-child {
-  margin-bottom: 8px;
-}
-
-.form-textarea,
 .form-input {
   padding: 8px 16px;
-  margin-top: 8px;
   outline: none;
   border: 1px solid #808080;
   border-radius: 4px;
@@ -74,28 +75,18 @@ label:first-child {
   resize: none;
 }
 
-.feedback-form {
-  max-width: 408px;
-  margin: 40px auto 0;
-  padding: 24px;
-}
-
-.form-textarea:hover,
 .form-input:hover {
   border-color: #000;
 }
 
-.form-textarea:focus,
 .form-input:focus {
   border-color: #808080;
 }
 
 .form-button {
-  display: block;
   border: none;
   padding: 6px 16px;
   border-radius: 8px;
-  margin-top: 16px;
   color: #fff;
   background-color: #4e75ff;
   letter-spacing: 0.04em;
@@ -105,4 +96,40 @@ label:first-child {
 
 .form-button:hover {
   background-color: #6c8cff;
+}
+
+.gallery-item {
+  border: 1px solid #808080;
+  transition: transform 400ms ease;
+}
+
+.gallery-item:hover {
+  transform: scale(1.04);
+}
+
+.gallery-description {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  border-top: 1px solid #808080;
+}
+
+.gallery-description li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gallery-description h3 {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+}
+.gallery-description p {
+  font-size: 12px;
+  line-height: 2;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
 }
