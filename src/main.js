@@ -14,12 +14,12 @@ formInp.addEventListener('input', () => {
 
 formBtn.addEventListener('click', e => {
   e.preventDefault();
-
   if (q) {
     gallery.innerHTML = '<span class="loader"></span>';
     pixabayFetch()
       .then(data => renderGallery(data))
       .catch(error => {
+        console.log(error);
         iziToast.error({
           message:
             'Sorry, there are no images matching your search query. Please try again!',
@@ -27,4 +27,5 @@ formBtn.addEventListener('click', e => {
         });
       });
   }
+  formInp.value = '';
 });
